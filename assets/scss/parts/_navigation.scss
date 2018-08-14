@@ -1,0 +1,207 @@
+.page-header {
+  overflow: visible;
+  width: 95px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: $white;
+  z-index: 1031;
+  @media (max-width: 767px) {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 40px;
+    background: #ffffff;
+    z-index: 1031;
+    overflow: hidden;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    // -webkit-transition: height 0.2s ease-in-out;
+    // -moz-transition: height 0.2s ease-in-out;
+    // -o-transition: height 0.2s ease-in-out;
+    // transition: height 0.2s ease-in-out;
+  }
+}
+.show-mobile-menu {
+  height: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent url(../../images/menu_overlay.png);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.main {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  -webkit-box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+  .header-mobile {
+    @media (max-width: 767px) {
+      position: relative;
+      z-index: 2;
+      background: #ffffff;
+      height: 40px;
+    }
+    .menu-mobile {
+      width: 45px;
+      float: left;
+      height: 100%;
+      line-height: 40px;
+      font-size: 50px;
+      display: block;
+      color: #85979d;
+      position: relative;
+      i {
+        position: absolute;
+        top: 50%;
+        margin-top: -0.5em;
+        opacity: 0;
+        -webkit-transition: opacity 0.2s;
+        -moz-transition: opacity 0.2s;
+        -o-transition: opacity 0.2s;
+        transition: opacity 0.2s;
+      }
+      .active {
+        opacity: 1;
+      }
+    }
+    .logo-mobile {
+      background-image: url(../../images/logo-mobile.png);
+      float: right;
+      display: block;
+      width: 45px;
+      height: 31px;
+      background-size: auto 27px;
+      background-position: 50% 11px;
+      background-repeat: no-repeat;
+    }
+    .claim-mobile {
+      margin: 0 45px;
+      height: 100%;
+      text-align: center;
+      line-height: 40px;
+      font-family: 'VWTextWebBold', arial, verdana, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+    }
+  }
+  .menu {
+    height: 100%;
+    @media (max-width: 767px) {
+      overflow: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    ul {
+      height: 100%;
+      background-color: $white;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      @media (max-width: 767px) {
+        top: 0;
+        padding-bottom: 60px;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        overflow: hidden;
+      }
+      li {
+        border-top: 1px solid $lightgrey;
+        @media (min-width: 768px) {
+          padding: 0 0 12px 0;
+          width: 100%;
+          text-align: center;
+          font-size: 0.857em;
+          line-height: 0.857em;
+          position: static;
+        }
+        .menu-link {
+          color: $grey;
+
+          .default {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all 0.2s ease-in;
+            -moz-transition: all 0.2s ease-in;
+            -o-transition: all 0.2s ease-in;
+            transition: all 0.2s ease-in;
+            position: relative;
+            opacity: 1;
+            position: relative;
+            padding: 24px 0 16px 0;
+            @media (min-width: 768px) {
+              padding: 0px;
+            }
+            .icons {
+              position: absolute;
+              top: 54%;
+              margin-top: -0.5em;
+              font-size: 3em;
+              width: 75px;
+              text-align: center;
+              @media (min-width: 768px) {
+                position: static;
+                display: block;
+                width: 100%;
+                font-size: 3em;
+                margin-top: 10px;
+              }
+            }
+            span {
+              padding-left: 75px;
+              font-size: 18px;
+              @media (min-width: 768px) {
+                padding: 0px;
+                font-size: inherit;
+              }
+            }
+          }
+        }
+        .menu-link:hover {
+          color: $vwblue;
+        }
+      }
+      .logo {
+        display: none;
+        @media (min-width: 768px) {
+          height: 125px;
+          display: block;
+          font-family: 'VWHeadWebBold', arial, verdana, sans-serif;
+          font-style: normal;
+          font-weight: normal;
+        }
+        .img {
+          @media (min-width: 768px) {
+            background-image: url(../../images/logo.png);
+            background-position: 50% 36px;
+            background-repeat: no-repeat;
+            background-size: 60px auto;
+            display: block;
+            width: 100%;
+            height: 100px;
+          }
+          display: none;
+        }
+      }
+    }
+  }
+}

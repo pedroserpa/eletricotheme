@@ -1,0 +1,80 @@
+.slick-margin--bottom {
+  margin-bottom: 30px;
+  .row {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+  }
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+  .arrow-wrapper--small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(29, 31, 32, 0.3);
+    top: 25%;
+    z-index: 1;
+    width: 40px;
+    height: 80px;
+    border: 0;
+    padding: 0;
+    margin: 0 6px;
+    overflow: hidden;
+    cursor: pointer;
+    &.arrow-wrapper--left {
+      left: 0;
+      background-position: left top;
+      -webkit-border-radius: 0 4px 4px 0/0 4px 4px 0;
+      -moz-border-radius: 0 4px 4px 0/0 4px 4px 0;
+      -ms-border-radius: 0 4px 4px 0/0 4px 4px 0;
+      -o-border-radius: 0 4px 4px 0/0 4px 4px 0;
+      border-radius: 0 4px 4px 0/0 4px 4px 0;
+      &:hover {
+        background-color: rgba(29, 31, 32, 0.5);
+      }
+    }
+    &.arrow-wrapper--right {
+      right: 0;
+      background-position: right top;
+      -webkit-border-radius: 4px 0 0 4px/4px 0 0 4px;
+      -moz-border-radius: 4px 0 0 4px/4px 0 0 4px;
+      -ms-border-radius: 4px 0 0 4px/4px 0 0 4px;
+      -o-border-radius: 4px 0 0 4px/4px 0 0 4px;
+      border-radius: 4px 0 0 4px/4px 0 0 4px;
+      &:hover {
+        background-color: rgba(29, 31, 32, 0.5);
+      }
+    }
+  }
+  .slick-dots {
+    position: absolute;
+    z-index: 999;
+    bottom: -35px;
+    li {
+      margin: 0;
+    }
+    .slick-active {
+      .dot-small {
+        background-color: $vwblue;
+      }
+    }
+    .dot-small {
+      background-color: $grey;
+      border-radius: 35%;
+      cursor: pointer;
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+    }
+  }
+}

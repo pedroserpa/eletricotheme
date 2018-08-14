@@ -1,0 +1,38 @@
+.jornal-cta {
+  position: relative;
+  .jornal-cta__img {
+    margin-bottom: 10px;
+    @media (min-width: 768px) {
+      margin-bottom: 0px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .jornal-cta__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    &:before {
+      content: ' ';
+      display: block;
+      /* adjust 'height' to position overlay content vertically */
+      height: 70%;
+    }
+  }
+  .btn {
+    margin-left: 117px;
+    margin-bottom: 10px;
+    @media (min-width: 768px) {
+      margin-left: 350px;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

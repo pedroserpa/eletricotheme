@@ -1,0 +1,56 @@
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn {
+  font-family: 'VWTextWebBold';
+  font-weight: bold;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &.btn--primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    background-color: $vwblue;
+    border-color: $vwblue;
+    height: 45px;
+    line-height: 16px;
+    white-space: normal;
+    width: 100%;
+    max-width: 280px;
+    padding: 4px 9px;
+    text-align: center;
+
+    &:hover {
+      color: $white;
+      background-color: $darkblue;
+      border-color: $darkblue;
+    }
+  }
+  &.btn--darkblue {
+    background-color: $darkblue;
+    border-color: $darkblue;
+    &:hover {
+      color: $white;
+      background-color: $vwblue;
+      border-color: $vwblue;
+    }
+  }
+}

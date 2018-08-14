@@ -1,0 +1,133 @@
+.global-footer {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+  padding-bottom: 34px;
+  @media only screen and (min-width: 768px) {
+    padding: 0 0 44px 96px;
+  }
+  .footer-topbar {
+    background-color: $lightgrey;
+    margin-bottom: 30px;
+    @media only screen and (min-width: 768px) {
+      margin-bottom: 25px;
+    }
+    .topbar-link {
+      width: 100%;
+      padding-left: 10px;
+      font-size: 14px;
+      line-height: 16px;
+      color: $black;
+      text-decoration: none;
+      @media only screen and (min-width: 768px) {
+        border-top: 1px solid $lightgrey;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .topbar-text {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        color: $black;
+        line-height: 35px;
+        vertical-align: middle;
+        .icon-arrow-up {
+          margin-left: 16px;
+          font-size: 20px;
+          @media only screen and (min-width: 768px) {
+          }
+        }
+      }
+    }
+  }
+  .footer-bottom {
+    padding: 0;
+    text-align: center;
+    @media only screen and (min-width: 768px) {
+      text-align: left;
+    }
+    .footer-bottom__hide {
+      display: none;
+      @media only screen and (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+    .footer-link-element {
+      display: inline-block;
+      height: 38px;
+      padding-left: 10px;
+      @media only screen and (min-width: 768px) {
+        height: 50px;
+        display: flex;
+      }
+      &:nth-child(-n + 3) {
+        .footer-links {
+          border-top: 0;
+        }
+      }
+      .footer-links {
+        color: #2f3538;
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 16px;
+        @media only screen and (min-width: 768px) {
+          border-top: 1px solid #dee1e3;
+        }
+      }
+    }
+  }
+  .vw_m520_legal {
+    margin-bottom: 28px;
+    margin-top: 23px;
+    text-align: center;
+    @media only screen and (min-width: 768px) {
+      margin-top: 19px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+    .vw_m520_legal_element {
+      padding-left: 4px;
+      margin-left: 0;
+      display: inline-block;
+      margin-left: -4px;
+      @media only screen and (min-width: 768px) {
+      }
+      &::after {
+        content: '|';
+      }
+      &:last-child::after {
+        content: '';
+      }
+      .vw_m520_legal_url {
+        color: $black;
+        padding: 0 10px;
+        text-decoration: none;
+      }
+    }
+  }
+  .vw_m520_legal_copy {
+    padding-left: 15px;
+    margin-bottom: 20px;
+    @media only screen and (min-width: 768px) {
+      margin-top: 19px;
+      padding-left: 10px;
+    }
+    .vw_m520_copy_text {
+      margin: 0;
+    }
+  }
+  .footer-bigtext {
+    font-size: 11px;
+    line-height: 16px;
+    padding: 0;
+    @media only screen and (min-width: 768px) {
+      margin-top: 45px;
+    }
+  }
+}
