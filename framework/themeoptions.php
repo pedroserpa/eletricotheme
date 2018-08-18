@@ -70,7 +70,7 @@ class ThemeOptions
        $google_api_id = $theme_settings['google_api_id'];
        $footer_style = $theme_settings['footer_style'];
        
-	   $styles_options=get_option( 'electrico_theme_options_styles',true );
+	$styles_options=get_option( 'electrico_theme_options_styles',true );
 	   $header_toolbar_background_color = $styles_options['header_toolbar_background_color'];
 	   $header_background_color = $styles_options['header_background_color'];
 	   $footer_background_color = $styles_options['footer_background_color'];
@@ -79,13 +79,16 @@ class ThemeOptions
 	   $body_text = $styles_options['body_text'];
        $link_color = $styles_options['link_color'];
        $hover_link_color = $styles_options['hover_link_color'];
+	   
+	   $header_toolbar_link_color = $styles_options['header_toolbar_link_color'];
+	   $header_toolbar_hover_link_color = $styles_options['header_toolbar_hover_link_color'];
        $header_link_color = $styles_options['header_link_color'];
        $header_hover_link_color = $styles_options['header_hover_link_color'];
 	   
 	   $footer_text_color = $styles_options['footer_text_color'];
        $footer_link_color = $styles_options['footer_link_color'];
        
-     $option_logos = get_option( 'electrico_theme_options_logos',true );
+    $option_logos = get_option( 'electrico_theme_options_logos',true );
        $header_logo = $option_logos[ 'header_logo' ];
        $alt_logo = $option_logos[ 'alt_logo' ];
        $shop_logo = $option_logos[ 'shop_logo' ];
@@ -129,6 +132,10 @@ class ThemeOptions
             if(!empty($body_text))$theme_options_css .= 'body {color:'.$body_text.';}';
             if(!empty($header_link_color))$theme_options_css .= 'header a,header a:link {color:'.$header_link_color.';}';
             if(!empty($header_hover_link_color))$theme_options_css .= 'header a:hover, header a:focus, header a:active {color:'.$header_hover_link_color.';}';
+			
+            if(!empty($header_toolbar_link_color))$theme_options_css .= 'header .toolbar a,header .toolbar a:link {color:'.$header_toolbar_link_color.';}';
+            if(!empty($header_toolbar_hover_link_color))$theme_options_css .= 'header .toolbar a:hover, header .toolbar a:focus, header .toolbar a:active {color:'.$header_toolbar_hover_link_color.';}';
+			
             if(!empty($link_color))$theme_options_css .= 'body a,a:link, a:active, .slicks-slider a {color:'.$link_color.';}';
             if(!empty($hover_link_color))$theme_options_css .= 'a:hover, a:focus {color:'.$hover_link_color.';}';
 			if(!empty($footer_text_color))$theme_options_css .= 'footer,footer .col, footer p {color:'.$footer_text_color.';}';
@@ -249,6 +256,9 @@ class ThemeOptions
 	   echo "jQuery('#hover_link_color').colorpicker({setValue:'".$hover_link_color."'});";
 	   echo "jQuery('#header_link_color').colorpicker({setValue:'".$header_link_color."'});";
 	   echo "jQuery('#header_hover_link_color').colorpicker({setValue:'".$header_hover_link_color."'});";
+	   
+	   echo "jQuery('#header_toolbar_link_color').colorpicker({setValue:'".$header_toolbar_link_color."'});";
+	   echo "jQuery('#header_toolbar_hover_link_color').colorpicker({setValue:'".$header_toolbar_hover_link_color."'});";
 	   
 	   echo "jQuery('#footer_text_color').colorpicker({setValue:'".$footer_text_color."'});";
 	   echo "jQuery('#footer_link_color').colorpicker({setValue:'".$footer_link_color."'});";

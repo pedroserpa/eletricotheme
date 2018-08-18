@@ -204,6 +204,8 @@ if( ! class_exists( 'HipercriativoPostTypes' ) ) {
 		unset( $wp_meta_boxes['video-posts']['after_title'] );
 	}
 	public function wpt_save_related_posts_meta( $post_id, $post ) {
+		if(get_post_type($post_id)!=='video-posts')return ;
+		
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return $post_id;
 		}

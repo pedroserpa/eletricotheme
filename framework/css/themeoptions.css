@@ -22,9 +22,11 @@ body {
 .themeoptionspanel .nav.nav-tabs li:last-child a{border-radius: 0 0 4px 4px!important;}
 .themeoptionspanel .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{cursor:pointer;background-color:#27D39C;border:1px solid #02cc8b;}
 .themeoptionspanel .nav-tabs > li > a:hover {background-color:#3EDBA8;border:0}
+.themeoptionspanel .nav-tabs > li > a:focus {box-shadow:1px 1px #3EDBA8;}
 
 .themeoptionspanel .tab-content {box-sizing:border-box;padding:4px 22px 8px 22px;min-height:480px;background-color:white;border: 1px solid #ddd;border-top:4px solid #02cc8b;}
-.themeoptionspanel .tab-content hr {margin:25px auto;float:none;clear:both;display:block;width:96.4%;}
+.themeoptionspanel .tab-content hr {margin:35px auto;float:none;clear:both;display:block;width:96.4%;border:1px solid #f4f4f4}
+.themeoptionspanel .tab-content hr.w-100 {border:1px solid #e3e3e3}
 .themeoptionspanel .tab-content h2 {margin-bottom:22px;padding:0 0 4px 0;font-weight:400;font-size:21px;border-bottom:1px solid #ddd;}
 .themeoptionspanel .tab-content h3 {color:#999;margin-bottom:15px;font-weight:300;font-size:17px;font-size:16px}
 .themeoptionspanel .tab-content .form-control, .themeoptionspanel .tab-content .input-group-addon {height:35px;}
