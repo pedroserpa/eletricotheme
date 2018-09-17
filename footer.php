@@ -18,6 +18,7 @@
  */
 ?>
 </main><!--end .main-content-->
+<div class="clearfix"></div>
 <footer class="global-footer">
     <div class="container-fluid">
       <div class="row footer-bottom ">
@@ -59,9 +60,7 @@
     dynamic_sidebar('sub_footer');
     echo '</div></div>';
     endif; ?>
-    
   </footer>
 <?php wp_footer(); ?>
 </body>
 </html>
-

@@ -17,7 +17,7 @@ class mediaContentBox extends WPBakeryShortCode {
         }
         vc_map( 
             array(
-                'name' => __('VW Media Box', 'hipercriativo'),
+                'name' => __('Elétrico Media Box', 'hipercriativo'),
                 'base' => 'media_contentbox',
                 'icon' => 'icon-media_contentbox vc_mk_element-icon',
                 /*'category' => __('My Custom Elements', 'hipercriativo'), */  

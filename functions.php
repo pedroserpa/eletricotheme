@@ -42,6 +42,8 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 		add_filter( 'login_headertitle', array($this,'electrico_login_logo_url_title') );
 
 		add_action( 'after_setup_theme', array($this,'after_electrico_install') );
+
+		add_filter( 'body_class', array($this,'electrico_body_class') );
 		
 		//post types
 		if(file_exists(get_template_directory() . '/framework/posttypes.php'))include(get_template_directory() . '/framework/posttypes.php');
@@ -235,11 +237,11 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 		 * into your own language.
 		 */
 		$fonts_url = '';
-		$gfont = _x( 'on', 'Montserrat font: on or off', 'eletrico' );
+		$gfont = _x( 'on', 'Open Sans font: on or off', 'eletrico' );
 		if ( 'off' !== $gfont ) {
 			$font_families = array();
 
-			$font_families[] = 'Montserrat:200,300,400,500,700';
+			$font_families[] = 'Open Sans:300,400,600,700';
 
 			$query_args = array(
 				'family' => urlencode( implode( '|', $font_families ) ),
@@ -453,7 +455,7 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 	public function electrico_login_logo() { ?>
 		<style type="text/css">
 			#login h1 a, .login h1 a {
-			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png);
+			background-image: url(<?php echo get_template_directory_uri(); ?>/assets/images/logo.png);
 			width:200px;
 			height:100px;
 			background-size:100%;
@@ -485,6 +487,13 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 		//add_image_size('5_10_thumbs',766,869,true);
 		add_image_size('5_10_thumbs',766,952,true);
 	}
+	public function electrico_body_class($classes)
+	{
+		global $post;
+		if(is_page()):
+			return array_merge( $classes, array( 'page-'.$post->post_name ) );
+		endif;
+	}
 	/**
 	VC INTEGRATION
 	**/
@@ -510,6 +519,7 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
         //}
     
         if(file_exists(get_template_directory().'/vc-elements/big_slick/big_slick.php'))require_once( get_template_directory().'/vc-elements/big_slick/big_slick.php' );
+        if(file_exists(get_template_directory().'/vc-elements/el_accordion/el_accordion.php'))require_once( get_template_directory().'/vc-elements/el_accordion/el_accordion.php' );
         if(file_exists(get_template_directory().'/vc-elements/el_vw_image/el_vw_image.php'))require_once( get_template_directory().'/vc-elements/el_vw_image/el_vw_image.php' );
         if(file_exists(get_template_directory().'/vc-elements/el_carousel/el_carousel.php'))require_once( get_template_directory().'/vc-elements/el_carousel/el_carousel.php' );
         if(file_exists(get_template_directory().'/vc-elements/el_padding/el_padding.php'))require_once( get_template_directory().'/vc-elements/el_padding/el_padding.php' ); 
@@ -520,11 +530,15 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
         if(file_exists(get_template_directory().'/vc-elements/el_mosaic/el_mosaic.php'))require_once( get_template_directory().'/vc-elements/el_mosaic/el_mosaic.php' );
         if(file_exists(get_template_directory().'/vc-elements/el_folio_mosaic/el_foliomosaic.php'))require_once( get_template_directory().'/vc-elements/el_folio_mosaic/el_foliomosaic.php' );
         if(file_exists(get_template_directory().'/vc-elements/el_video_mosaic/el_videomosaic.php'))require_once( get_template_directory().'/vc-elements/el_video_mosaic/el_videomosaic.php' );
-        //require_once( get_template_directory().'/vc-elements/el_custombox/hoverimg_contentbox.php' );
+        if(file_exists(get_template_directory().'/vc-elements/el_fancy_heading/el_fancy_heading.php'))require_once( get_template_directory().'/vc-elements/el_fancy_heading/el_fancy_heading.php' );
+        if(file_exists(get_template_directory().'/vc-elements/el_contentbox/el_contentbox.php'))require_once( get_template_directory().'/vc-elements/el_contentbox/el_contentbox.php' );
 		
+		//if(file_exists(get_template_directory().'/vc-elements/el_custom_box/el_custom_box.php'))require_once( get_template_directory().'/vc-elements/el_custom_box/el_custom_box.php' );
+		
+        
     }
     public function vc_after_init_actions() {
-        $new_attributes=array(
+        $row_attributes=array(
         array(
             'type' => 'checkbox',
             'heading' => "Full width row?",
@@ -537,6 +551,24 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
             'heading' => "Minimum Height (Px)",
             'param_name' => 'min_height',
             'value' => "10",
+            "weight"=>1
+        ),
+        array(
+            'type' => 'checkbox',
+            'heading' => "Add background mask?",
+            'param_name' => 'background_mask_add',
+            'value' => 'false',
+            "weight"=>1
+        ),
+        array(
+            "type" => "colorpicker",
+            "heading" => __("Background Mask", "hipercriativo"),
+            "param_name" => "background_mask",
+            "value" => "",
+            "dependency" => array(
+                "element" => "background_mask_add",
+                "value" => 'true'
+            ),
             "weight"=>1
         ),
         array(
@@ -554,11 +586,83 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
                     'Hidden on small devices' => 'hidden-sm-down',
                     'Hidden on extra small devices' => 'hidden-xs-down',
             ),
-            "weight"=>4
+            "weight"=>1
         )
         );
-        vc_add_params( 'vc_row', $new_attributes );
-        vc_add_params( 'vc_row_inner', $new_attributes );
+        $col_attributes=array(
+        array(
+            'type' => 'numberfield',
+            'heading' => "Minimum Height (Px)",
+            'param_name' => 'min_height',
+            'value' => "10",
+            "weight"=>1
+        ),
+        array(
+            'type' => 'checkbox',
+            'heading' => "Add background mask?",
+            'param_name' => 'background_mask_add',
+            'value' => 'false',
+            "weight"=>1
+        ),
+        array(
+            "type" => "colorpicker",
+            "heading" => __("Background Mask", "hipercriativo"),
+            "param_name" => "background_mask",
+            "value" => "",
+            "dependency" => array(
+                "element" => "background_mask_add",
+                "value" => 'true'
+            ),
+            "weight"=>1
+        ),
+        array(
+            'type' => 'dropdown',
+            'heading' => "Responsive visibility",
+            'param_name' => 'responsive_visibility',
+            'value' =>
+            array(
+                    'Visible On All'   => '',
+                    'Visible on large devices'   => 'hidden-lg-up',
+                    'Visible on medium&large devices' => 'hidden-md-up',
+                    'Visible on extra small devices' => 'hidden-sm-up',
+                    'Hidden on large devices'   => 'hidden-lg-up',
+                    'Hidden on medium&large devices' => 'hidden-md-up',
+                    'Hidden on small devices' => 'hidden-sm-down',
+                    'Hidden on extra small devices' => 'hidden-xs-down',
+            ),
+            "weight"=>1
+        )
+        );
+		$gmaps_attributes=array(
+			array(
+				'type' => 'checkbox',
+				'heading' => "Show Google Map?",
+				'param_name' => 'gmap_show',
+				'value' => 'false',
+				"weight"=>12
+			),
+			array(
+				'type' => 'textfield',
+				'heading' => "Google Map Link",
+				'param_name' => 'gmap_link',
+				'value' => '',
+				"weight"=>13,
+				"dependency" => array(
+					"element" => "gmap_show",
+					"value" => "true"
+				)
+			),
+		);
+        vc_add_params( 'vc_row', $row_attributes );
+        vc_add_params( 'vc_row_inner', $row_attributes );
+        vc_add_params( 'vc_column', $col_attributes );
+        vc_add_params( 'vc_column_inner', $col_attributes );
+        vc_add_params( 'vc_section', $gmaps_attributes );
+		if(file_exists(get_template_directory().'/vc-elements/google_fonts.php')){
+			require_once(get_template_directory().'/vc-elements/google_fonts.php');
+			//vc_lean_map( 'vc_custom_google_fonts', null, get_template_directory() . '/vc-elements/el_fancy_heading/el_fancy_heading.php' );
+		}
+		
     }
 	public function getVideoID($video_url)
 	{

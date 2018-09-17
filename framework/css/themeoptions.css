@@ -35,3 +35,4 @@ body {
 .themeoptionspanel .tab-content .btn-success{background-color:#02cc8b;padding:5px 22px;border:1px solid #02AC75;}
 .themeoptionspanel .tab-content .btn-success:hover,.themeoptionspanel .tab-content .btn-success:focus{background-color:#27D39C;}
 .themeoptionspanel .tab-content .image-select {cursor:pointer;}
+.mt-15{margin-top: 15px;}.mb-15{margin-bottom: 15px;}

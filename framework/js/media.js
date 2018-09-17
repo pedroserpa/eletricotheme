@@ -1,8 +1,9 @@
-var frame;
+var frame,$imgField=null;
 jQuery(document).ready(function() {
     jQuery('.image-select').on('click',function(e){
         e.preventDefault();
-        var $imgField=jQuery(this).prev('input.image-field');
+        var $this=jQuery(this);
+        $imgField=$this.prev('input.image-field');
         
   		if ( frame ) {
           frame.open();
@@ -21,8 +22,9 @@ jQuery(document).ready(function() {
           var attachment = frame.state().get('selection').first().toJSON();
     
           // Send the attachment URL to our custom image input field.
-          jQuery('#image-preview').append( '<img class="img-responsive" src="'+attachment.url+'" alt="" style="max-width:100%;"/>' );
+          jQuery('#image-preview').html( '<img class="img-responsive" src="'+attachment.url+'" alt="" style="max-width:100%;"/>' );
           $imgField.val(attachment.url);
+          $imgField=null;
         });
     
         // Finally, open the modal on click

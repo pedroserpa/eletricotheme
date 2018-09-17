@@ -2,7 +2,7 @@
 /**
  * The header for our theme
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
+ * This is the template that displays all of the <head> section and everything up until <main id="content">
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -50,15 +50,34 @@ $header_styles=get_option('electrico_theme_options_header_styles',true);
 		
 		<div class="col-md-6">
 		<?php
-		 if(function_exists('icl_get_languages')):
+		 if(is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) && function_exists('icl_get_languages')):
 		  echo '<div class="toolbar_menu text-right">';
 		  $languages = icl_get_languages('skip_missing=1&orderby=code');
 			  if(1 < count($languages)){
 				echo '<ul class="lang_nav">';
 				foreach($languages as $l){
 				  if(!$l['active']):
-					echo '<li><a href="'.$l['url'].'">';
+					echo '<li><a href="'.$l['url'].'"><i class="fa fa-globe"></i> ';
 					echo ($l['tag']) ? $l['tag'] : $l['language_code'];
+					echo '</a></li>';
+				  endif;
+				}
+				echo '</ul>';
+			  }
+			  echo '</div>';
+		  endif;
+		  
+		 if(is_plugin_active( 'polylang/polylang.php' )):
+		  echo '<div class="toolbar_menu text-right">';
+		  $languages = pll_the_languages(array('raw'=>1));
+			  if(1 < count($languages)){
+				echo '<ul class="lang_nav m-1">';
+				foreach($languages as $l){
+				  if(!$l['current_lang']):
+					echo '<li class="text-uppercase"><a href="'.$l['url'].'"><i class="fa fa-globe"></i> ';
+					echo '<span>';
+					echo ($l['name']) ? $l['name'] : $l['slug'];
+					echo '</span>';
 					echo '</a></li>';
 				  endif;
 				}
@@ -75,7 +94,7 @@ $header_styles=get_option('electrico_theme_options_header_styles',true);
    <div class="<?php echo($header_styles['full_width_header_style']&&$header_styles['full_width_header_style']=='1') ? 'container-fluid' : 'container';?>">
     <nav class="main <?php echo($header_styles['header_style']&&!empty($header_styles['header_style']))?$header_styles['header_style']:'';?>">
       <?php
-		echo '<a class="navbar-brand align-center d-none d-md-none d-lg-none d-sm-block" href="'.home_url("/").'"><img src="';
+		echo '<a class="navbar-brand align-center d-md-none d-lg-none d-sm-block d-xs-block" href="'.home_url("/").'"><img src="';
 		echo ($alt_logo)?$alt_logo:$custom_logo;
 		echo '" class="img-fluid"></a>';
 
@@ -88,12 +107,16 @@ $header_styles=get_option('electrico_theme_options_header_styles',true);
           echo '</div>';
       endif;
     
-      if($header_styles['header_style']&&$header_styles['header_style']=='logo_on_left'):
-          echo '<a class="navbar-brand text-left" href="'.home_url("/").'"><img src="';
+      if($header_styles['header_style']&&($header_styles['header_style']=='logo_on_left_menu_right'||$header_styles['header_style']=='logo_on_left_menu_center')):
+          echo '<a class="navbar-brand text-left float-none float-lg-left d-none d-md-block d-lg-block" href="'.home_url("/").'"><img src="';
           echo ($alt_logo)?$alt_logo:$custom_logo;
           echo '" class="img-fluid"></a>';
           
-          echo '<div class="float-right text-right">';
+          if($header_styles['header_style']=='logo_on_left_menu_right')echo '<div class="float-right text-right">';
+		  else echo '<div class="text-center">';
+		  echo '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars"></i>
+  </button>';
           wp_nav_menu( array(
     		'theme_location' => 'top',
     		'menu_id'        => 'top-menu',
@@ -113,11 +136,10 @@ $header_styles=get_option('electrico_theme_options_header_styles',true);
             ));
             echo '</div>';
           }
-          
       endif;
       
 		  $social_links=get_option('electrico_theme_options_social_links',true);
-		  if($social_links):
+		  if($social_links&&is_array($social_links)&&count($social_links)>0):
 		  echo '<div class="social-nav"><ul>';
 		  if($social_links['facebook_link'])echo '<li><a target="_blank" href="'.$social_links['facebook_link'].'"><i class="fa fa-facebook-square"></i></a></li>';
 		  if($social_links['twitter_link'])echo '<li><a target="_blank" href="'.$social_links['twitter_link'].'"><i class="fa fa-twitter"></i></a></li>';
@@ -133,11 +155,12 @@ $header_styles=get_option('electrico_theme_options_header_styles',true);
 		  if($social_links['dribble_link'])echo '<li><a target="_blank" href="'.$social_links['dribble_link'].'"><i class="fa fa-dribble"></i></a></li>';
 		  echo '</ul></div>';
 		  endif;
-      echo '</div>';
+      //echo '</div>';
       ?>
     </nav>
     </div>
   </header>
+  <div class="clearfix"></div>
   
   <?php if($header_styles['fullscreen_nav']&&$header_styles['fullscreen_nav']=='1'):?>
   <div class="fullscreen-nav">

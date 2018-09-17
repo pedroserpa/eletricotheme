@@ -21,7 +21,9 @@ class ThemeOptions
 			array(
 				$this,
 				'eletrico_options'
-			),'',2
+			),
+            '',
+            2
 		);
         add_action( 'admin_menu', array($this,'eletrico_options') );
 	}
@@ -40,139 +42,117 @@ class ThemeOptions
    
         if (isset($_POST['wphipercriativo_themeoptions_settings'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_settings']), -1 )) 
         {
-            if (isset($_POST['electrico_theme_options_settings'])) update_option('electrico_theme_options_settings', $_POST['electrico_theme_options_settings']); if (empty($_POST['electrico_theme_options_settings'])) delete_option('electrico_theme_options_settings');
+            if (isset($_POST['lang_menu_custom'])) update_option('lang_menu_custom', $_POST['lang_menu_custom']); if (isset($_POST['lang_menu_custom']) && $_POST['lang_menu_custom']==''||!isset($_POST['lang_menu_custom'])) delete_option('lang_menu_custom');
+            if (isset($_POST['facebook_app_id'])) update_option('facebook_app_id', $_POST['facebook_app_id']); if (isset($_POST['facebook_app_id']) && $_POST['facebook_app_id']==''||!isset($_POST['facebook_app_id'])) delete_option('facebook_app_id');
+            if (isset($_POST['google_api_id'])) update_option('google_api_id', $_POST['google_api_id']); if (isset($_POST['google_api_id']) && $_POST['google_api_id']==''||!isset($_POST['google_api_id'])) delete_option('google_api_id');
         }
         if (isset($_POST['wphipercriativo_themeoptions_styles'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_styles']), -1 )) 
         {
-            if (isset($_POST['electrico_theme_options_styles'])) update_option('electrico_theme_options_styles', $_POST['electrico_theme_options_styles']); if (empty($_POST['electrico_theme_options_styles'])) delete_option('electrico_theme_options_styles');
+            if (isset($_POST['body_background'])) update_option('body_background', $_POST['body_background']); if (isset($_POST['body_background']) && $_POST['body_background']==''||!isset($_POST['body_background'])) delete_option('body_background');
+            if (isset($_POST['body_text'])) update_option('body_text', $_POST['body_text']); if (isset($_POST['body_text']) && $_POST['body_text']==''||!isset($_POST['body_text'])) delete_option('body_text');
+            if (isset($_POST['link_color'])) update_option('link_color', $_POST['link_color']); if (isset($_POST['link_color']) && $_POST['link_color']==''||!isset($_POST['link_color'])) delete_option('link_color');
+            if (isset($_POST['hover_link_color'])) update_option('hover_link_color', $_POST['hover_link_color']); if (isset($_POST['hover_link_color']) && $_POST['hover_link_color']==''||!isset($_POST['hover_link_color'])) delete_option('hover_link_color');
+            if (isset($_POST['header_link_color'])) update_option('header_link_color', $_POST['header_link_color']); if (isset($_POST['header_link_color']) && $_POST['header_link_color']==''||!isset($_POST['header_link_color'])) delete_option('header_link_color');
+            if (isset($_POST['header_hover_link_color'])) update_option('header_hover_link_color', $_POST['header_hover_link_color']); if (isset($_POST['header_hover_link_color']) && $_POST['header_hover_link_color']==''||!isset($_POST['header_hover_link_color'])) delete_option('header_hover_link_color');
         }
     	if (isset($_POST['wphipercriativo_themeoptions_logos'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_logos']), -1 )) 
         {   
-           if (isset($_POST['electrico_theme_options_logos'])) update_option('electrico_theme_options_logos', $_POST['electrico_theme_options_logos']); if (empty($_POST['electrico_theme_options_logos'])) delete_option('electrico_theme_options_logos');
+           if (isset($_POST['header_logo'])) update_option('header_logo', $_POST['header_logo']); if (isset($_POST['header_logo']) && $_POST['header_logo']==''||!isset($_POST['header_logo'])) delete_option('header_logo');
+           if (isset($_POST['alt_logo'])) update_option('alt_logo', $_POST['alt_logo']); if (isset($_POST['alt_logo']) && $_POST['alt_logo']==''||!isset($_POST['alt_logo'])) delete_option('alt_logo');
+           if (isset($_POST['shop_logo'])) update_option('shop_logo', $_POST['shop_logo']); if (isset($_POST['shop_logo']) && $_POST['shop_logo']==''||!isset($_POST['shop_logo'])) delete_option('shop_logo');
+           if (isset($_POST['mobile_logo'])) update_option('mobile_logo', $_POST['mobile_logo']); if (isset($_POST['mobile_logo']) && $_POST['mobile_logo']==''||!isset($_POST['mobile_logo'])) delete_option('mobile_logo');
+           if (isset($_POST['favicon_logo'])) update_option('favicon_logo', $_POST['favicon_logo']); if (isset($_POST['favicon_logo']) && $_POST['favicon_logo']==''||!isset($_POST['favicon_logo'])) delete_option('favicon_logo');
         }
         if (isset($_POST['wphipercriativo_themeoptions_social'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_social']), -1 )) 
         {   
-           if (isset($_POST['electrico_theme_options_social_links']) && $_POST['electrico_theme_options_social_links']!='') update_option('electrico_theme_options_social_links', $_POST['electrico_theme_options_social_links']); 
-           if (empty($_POST['electrico_theme_options_social_links'])) delete_option('electrico_theme_options_social_links');
+           if (isset($_POST['facebook_link']) && $_POST['facebook_link']!='') update_option('facebook_link', $_POST['facebook_link']); 
+           if (isset($_POST['facebook_link']) && $_POST['facebook_link']==''||!isset($_POST['facebook_link'])) delete_option('facebook_link');
+           if (isset($_POST['twitter_link']) && $_POST['twitter_link']!='') update_option('twitter_link', $_POST['twitter_link']); 
+           if (isset($_POST['twitter_link']) && $_POST['twitter_link']==''||!isset($_POST['twitter_link'])) delete_option('twitter_link');
+           if (isset($_POST['instagram_link']) && $_POST['instagram_link']!='') update_option('instagram_link', $_POST['instagram_link']); 
+           if (isset($_POST['instagram_link']) && $_POST['instagram_link']==''||!isset($_POST['instagram_link'])) delete_option('instagram_link');
+           if (isset($_POST['pinterest_link']) && $_POST['pinterest_link']!='') update_option('pinterest_link', $_POST['pinterest_link']); 
+           if (isset($_POST['pinterest_link']) && $_POST['pinterest_link']==''||!isset($_POST['pinterest_link'])) delete_option('pinterest_link');
+           if (isset($_POST['behance_link']) && $_POST['behance_link']!='') update_option('behance_link', $_POST['behance_link']); 
+           if (isset($_POST['behance_link']) && $_POST['behance_link']==''||!isset($_POST['behance_link']))  delete_option('behance_link');
+           if (isset($_POST['linkedin_link']) && $_POST['linkedin_link']!='') update_option('linkedin_link', $_POST['linkedin_link']);
+           if (isset($_POST['linkedin_link']) && $_POST['linkedin_link']==''||!isset($_POST['linkedin_link'])) delete_option('linkedin_link');
+           if (isset($_POST['googleplus_link']) && $_POST['googleplus_link']!='') update_option('googleplus_link', $_POST['googleplus_link']); 
+           if (isset($_POST['googleplus_link']) && $_POST['googleplus_link']==''||!isset($_POST['googleplus_link'])) delete_option('googleplus_link');
+           if (isset($_POST['youtube_link']) && $_POST['youtube_link']!='') update_option('youtube_link', $_POST['youtube_link']); 
+           if (isset($_POST['youtube_link']) && $_POST['youtube_link']==''||!isset($_POST['youtube_link'])) delete_option('youtube_link');
+           if (isset($_POST['vimeo_link']) && $_POST['vimeo_link']!='') update_option('vimeo_link', $_POST['vimeo_link']);
+           if (isset($_POST['vimeo_link']) && $_POST['vimeo_link']==''||!isset($_POST['vimeo_link']))  delete_option('vimeo_link');
+           if (isset($_POST['flickr_link']) && $_POST['flickr_link']!='') update_option('flickr_link', $_POST['flickr_link']);
+           if (isset($_POST['flickr_link']) && $_POST['flickr_link']==''||!isset($_POST['flickr_link'])) delete_option('flickr_link');
+           if (isset($_POST['xing_link']) && $_POST['xing_link']!='') update_option('xing_link', $_POST['xing_link']);
+           if (isset($_POST['xing_link']) && $_POST['xing_link']==''||!isset($_POST['xing_link'])) delete_option('xing_link');
+           if (isset($_POST['dribbble_link']) && $_POST['dribbble_link']!='') update_option('dribbble_link', $_POST['dribbble_link']);
+           if (isset($_POST['dribbble_link']) && $_POST['dribbble_link']==''||!isset($_POST['dribbble_link'])) delete_option('dribbble_link');
         }
         if (isset($_POST['wphipercriativo_themeoptions_header_styles'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_header_styles']), -1 )) 
         {
-            if (isset($_POST['electrico_theme_options_header_styles'])) update_option('electrico_theme_options_header_styles', $_POST['electrico_theme_options_header_styles']); if (empty($_POST['electrico_theme_options_header_styles'])) delete_option('electrico_theme_options_header_styles');
-        }
-		if (isset($_POST['wphipercriativo_themeoptions_content_styles'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_content_styles']), -1 )) 
-        {
-            if (isset($_POST['electrico_theme_options_content_styles'])) update_option('electrico_theme_options_content_styles', $_POST['electrico_theme_options_content_styles']); if (empty($_POST['electrico_theme_options_content_styles'])) delete_option('electrico_theme_options_content_styles');
+            if( isset($_POST['header_style'])&&$_POST['header_style']!='' ) update_option('header_style',esc_html($_POST['header_style'])); else delete_option('header_style');
+            if( isset($_POST['social_menu'])) update_option('social_menu','1'); else delete_option('social_menu');
+            if( isset($_POST['show_toolbar'])) update_option('show_toolbar','1'); else delete_option('show_toolbar');
+            if( isset($_POST['fullscreen_nav'])) update_option('fullscreen_nav','1'); else delete_option('fullscreen_nav');
         }
         if (isset($_POST['wphipercriativo_themeoptions_action_advanced'])&&wp_verify_nonce( sanitize_key($_POST['wphipercriativo_themeoptions_action_advanced']), -1 )) 
         {
-           if (isset($_POST['electrico_advanced_css'])&&$_POST['electrico_advanced_css']!='') update_option('electrico_advanced_css', esc_html($_POST['electrico_advanced_css'])); if (isset($_POST['electrico_advanced_css'])&&$_POST['electrico_advanced_css']==''||empty($_POST['electrico_advanced_css'])) delete_option('advanced_css');
-           if (isset($_POST['electrico_advanced_js'])&&$_POST['electrico_advanced_js']!='') update_option('electrico_advanced_js', esc_html($_POST['electrico_advanced_js'])); if (isset($_POST['electrico_advanced_js'])&&$_POST['electrico_advanced_js']==''||!isset($_POST['electrico_advanced_js'])) delete_option('electrico_advanced_js');
+           if (isset($_POST['advanced_css'])&&$_POST['advanced_css']!='') update_option('advanced_css', esc_html($_POST['advanced_css'])); if (isset($_POST['advanced_css'])&&$_POST['advanced_css']==''||!isset($_POST['advanced_css'])) delete_option('advanced_css');
+           if (isset($_POST['advanced_js'])&&$_POST['advanced_js']!='') update_option('advanced_js', esc_html($_POST['advanced_js'])); if (isset($_POST['advanced_js'])&&$_POST['advanced_js']==''||!isset($_POST['advanced_js'])) delete_option('advanced_js');
         }
-    $theme_settings=get_option('electrico_theme_options_settings',true);
-       $lang_menu_custom = $theme_settings['lang_menu_custom'];
-       $facebook_app_id = $theme_settings['facebook_app_id'];
-       $google_api_id = $theme_settings['google_api_id'];
-       $footer_style = $theme_settings['footer_style'];
+       $lang_menu_custom = get_option( 'lang_menu_custom' );
+       $facebook_app_id = get_option( 'facebook_app_id' );
+       $google_api_id = get_option( 'google_api_id' );
+        
+	   $body_background = get_option( 'body_background' );
+	   $body_text = get_option( 'body_text' );
+       $link_color = get_option( 'link_color'  );
+       $hover_link_color = get_option( 'hover_link_color' );
+       $header_link_color = get_option( 'header_link_color' );
+       $header_hover_link_color = get_option( 'header_hover_link_color' );
        
-	$styles_options=get_option( 'electrico_theme_options_styles',true );
-	   $header_toolbar_background_color = $styles_options['header_toolbar_background_color'];
-	   $header_background_color = $styles_options['header_background_color'];
-	   $footer_background_color = $styles_options['footer_background_color'];
-	   
-	   $body_background = $styles_options['body_background'];
-	   $body_text = $styles_options['body_text'];
-       $link_color = $styles_options['link_color'];
-       $hover_link_color = $styles_options['hover_link_color'];
-	   
-	   $header_toolbar_link_color = $styles_options['header_toolbar_link_color'];
-	   $header_toolbar_hover_link_color = $styles_options['header_toolbar_hover_link_color'];
-       $header_link_color = $styles_options['header_link_color'];
-       $header_hover_link_color = $styles_options['header_hover_link_color'];
-	   
-	   $footer_text_color = $styles_options['footer_text_color'];
-       $footer_link_color = $styles_options['footer_link_color'];
+       $header_logo = get_option( 'header_logo' );
+       $alt_logo = get_option( 'alt_logo' );
+       $shop_logo = get_option( 'shop_logo' );
+       $mobile_logo = get_option( 'mobile_logo' );
+       $favicon_logo = get_option( 'favicon_logo' );
        
-    $option_logos = get_option( 'electrico_theme_options_logos',true );
-       $header_logo = $option_logos[ 'header_logo' ];
-       $alt_logo = $option_logos[ 'alt_logo' ];
-       $shop_logo = $option_logos[ 'shop_logo' ];
-       $mobile_logo = $option_logos[ 'mobile_logo' ];
-       $favicon_logo = $option_logos[ 'favicon_logo' ];
-    
-    $social_links=get_option('electrico_theme_options_social_links',true);   
-       $facebook_link = $social_links[ 'facebook_link' ];
-       $twitter_link = $social_links[ 'twitter_link' ];
-       $instagram_link = $social_links[ 'instagram_link' ];
-       $pinterest_link = $social_links[ 'pinterest_link' ];
-       $behance_link = $social_links[ 'behance_link' ];
-       $linkedin_link = $social_links[ 'linkedin_link' ];
-       $googleplus_link = $social_links[ 'googleplus_link' ];
-       $youtube_link = $social_links[ 'youtube_link' ];
-       $vimeo_link = $social_links[ 'vimeo_link' ];
-       $flickr_link = $social_links[ 'flickr_link' ];
-       $xing_link = $social_links[ 'xing_link' ];
-       $dribbble_link = $social_links[ 'dribbble_link' ];
-    
-    $header_styles=get_option('electrico_theme_options_header_styles',true);
-       $header_style = $header_styles[ 'header_style' ];
-       $full_width_header_style = $header_styles[ 'full_width_header_style' ];
-       $social_menu = $header_styles[ 'social_menu' ];
-       $show_toolbar = $header_styles[ 'show_toolbar' ];
-       $fullscreen_nav = $header_styles[ 'fullscreen_nav' ];
-	   
-	$content_styles=get_option('electrico_theme_options_content_styles',true);
-    $content_style_text_color=$content_styles['text_color'];
-    $content_style_link_color=$content_styles['link_color'];
+       $facebook_link = get_option( 'facebook_link' );
+       $twitter_link = get_option( 'twitter_link' );
+       $instagram_link = get_option( 'instagram_link' );
+       $pinterest_link = get_option( 'pinterest_link' );
+       $behance_link = get_option( 'behance_link' );
+       $linkedin_link = get_option( 'linkedin_link' );
+       $googleplus_link = get_option( 'googleplus_link' );
+       $youtube_link = get_option( 'youtube_link' );
+       $vimeo_link = get_option( 'vimeo_link' );
+       $flickr_link = get_option( 'flickr_link' );
+       $xing_link = get_option( 'xing_link' );
+       $dribbble_link = get_option( 'dribbble_link' );
        
-       $advanced_css = get_option( 'electrico_advanced_css' );
-       $advanced_js = get_option( 'electrico_advanced_js' );
+       $header_style = get_option( 'header_style' );
+       $social_menu = get_option( 'social_menu' );
+       $show_toolbar = get_option( 'show_toolbar' );
+       $fullscreen_nav = get_option( 'fullscreen_nav' );
+       
+       $footer_style = get_option( 'footer_style' );
+       
+       $advanced_css = get_option( 'advanced_css' );
+       $advanced_js = get_option( 'advanced_js' );
        
        $theme_options_css='@charset "UTF-8";';
         if ( isset( $current_user->user_login ) && ! empty( $upload_dir['basedir'] ) )
         {
             if ( ! file_exists( $user_dirname ) ) { wp_mkdir_p( $user_dirname ); }
             $theme_options_css='@charset "UTF-8";';
-            if(!empty($header_toolbar_background_color))$theme_options_css .= 'header .toolbar {background-color:'.$header_toolbar_background_color.';}';
-            if(!empty($header_background_color))$theme_options_css .= 'header {background-color:'.$header_background_color.';}';
-            if(!empty($footer_background_color))$theme_options_css .= 'footer {background-color:'.$footer_background_color.';}';
-			
             if(!empty($body_background))$theme_options_css .= 'body {background-color:'.$body_background.';}';
             if(!empty($body_text))$theme_options_css .= 'body {color:'.$body_text.';}';
-            if(!empty($header_link_color))$theme_options_css .= 'header a,header a:link {color:'.$header_link_color.';}';
+            if(!empty($header_link_color))$theme_options_css .= 'header a:link {color:'.$header_link_color.';}';
             if(!empty($header_hover_link_color))$theme_options_css .= 'header a:hover, header a:focus, header a:active {color:'.$header_hover_link_color.';}';
-			
-            if(!empty($header_toolbar_link_color))$theme_options_css .= 'header .toolbar a,header .toolbar a:link {color:'.$header_toolbar_link_color.';}';
-            if(!empty($header_toolbar_hover_link_color))$theme_options_css .= 'header .toolbar a:hover, header .toolbar a:focus, header .toolbar a:active {color:'.$header_toolbar_hover_link_color.';}';
-			
-			if(!empty($content_styles))
-			{
-				$content_styles_css='body, body p{';
-					if(!empty($content_styles['font_size']))$content_styles_css.='font-size:'.intval($content_styles['font_size']).'px;';
-					if(!empty($content_styles['line_height']))$content_styles_css.='line-height:'.intval($content_styles['line_height']).'px;';
-					if(!empty($content_styles['font_size']))$content_styles_css.='color:'.stripslashes($content_styles['text_color']).';';
-				$content_styles_css.='}';
-
-        if(!empty($content_styles['margin_bottom'])||!empty($content_styles['padding_bottom'])):
-          $content_styles_css.='body p{';
-          if(!empty($content_styles['margin_bottom']))$content_styles_css.='margin-bottom:'.intval($content_styles['margin_bottom']).'px;';
-          if(!empty($content_styles['padding_bottom']))$content_styles_css.='padding-bottom:'.intval($content_styles['padding_bottom']).'px;';
-          $content_styles_css.='}';
-        endif;
-
-        if(!empty($content_styles['link_color'])||!empty($content_styles['link_color'])):
-          $content_styles_css.='body p a{';
-          if(!empty($content_styles['link_color']))$content_styles_css.='color:'.$content_styles['link_color'].';';
-          $content_styles_css.='}';
-        endif;
-
-				$theme_options_css.=$content_styles_css;
-			}
-			
-            if(!empty($link_color))$theme_options_css .= 'body a,a:link, a:active, .slicks-slider a {color:'.$link_color.';}';
+            if(!empty($link_color))$theme_options_css .= 'a,a:link, a:active {color:'.$link_color.';}';
             if(!empty($hover_link_color))$theme_options_css .= 'a:hover, a:focus {color:'.$hover_link_color.';}';
-      			if(!empty($footer_text_color))$theme_options_css .= 'footer,footer .col, footer p {color:'.$footer_text_color.';}';
-      			if(!empty($footer_link_color))$theme_options_css .= 'footer a, footer a:link {color:'.$footer_link_color.';}';
-			
             if(!empty($advanced_css))$theme_options_css .= wp_unslash($advanced_css);
             
             $file_write=false;
@@ -245,7 +225,7 @@ class ThemeOptions
             <h2>Content</h2>
             <h3>Content styles & settings</h3>
             <div class="container"><div class="row">';
-                    include('forms/form-content.php');
+                    //include('forms/form-social.php');
         echo '</div></div></div>';
         echo '<div id="_tab7" class="tab-pane fade">
             <h2>Footer</h2>
@@ -275,10 +255,6 @@ class ThemeOptions
        wp_enqueue_script('trumbowygjs', get_template_directory_uri().'/framework/js/trumbowyg.min.js');
        
        echo "<script>jQuery( document ).ready(function() {";
-	   echo "jQuery('#header_toolbar_background_color').colorpicker({setValue:'".$header_toolbar_background_color."'});";
-	   echo "jQuery('#header_background_color').colorpicker({setValue:'".$header_background_color."'});";
-	   echo "jQuery('#footer_background_color').colorpicker({setValue:'".$footer_background_color."'});";
-	   
 	   echo "jQuery('#body_background').colorpicker({setValue:'".$body_background."'});";
        //echo "jQuery('#body_text').val( '".$body_text."' );";
        echo "jQuery('#body_text').colorpicker({setValue:'".$body_text."'});";
@@ -288,22 +264,6 @@ class ThemeOptions
 	   echo "jQuery('#hover_link_color').colorpicker({setValue:'".$hover_link_color."'});";
 	   echo "jQuery('#header_link_color').colorpicker({setValue:'".$header_link_color."'});";
 	   echo "jQuery('#header_hover_link_color').colorpicker({setValue:'".$header_hover_link_color."'});";
-	   
-	   echo "jQuery('#header_toolbar_link_color').colorpicker({setValue:'".$header_toolbar_link_color."'});";
-	   echo "jQuery('#header_toolbar_hover_link_color').colorpicker({setValue:'".$header_toolbar_hover_link_color."'});";
-	   
-     echo "jQuery('#content_style_text_color').colorpicker({setValue:'".$content_style_text_color."'});";
-     echo "jQuery('#content_style_link_color').colorpicker({setValue:'".$content_style_link_color."'});";
-	   
-	   echo "jQuery('#footer_text_color').colorpicker({setValue:'".$footer_text_color."'});";
-	   echo "jQuery('#footer_link_color').colorpicker({setValue:'".$footer_link_color."'});";
-	   
-	   echo "jQuery('.tab-pane input[type=checkbox]').on('change',function(){";
-		   echo "var _this=jQuery(this);";
-		   echo "if( _this.is(':checked') )_this.val(1);";
-		   echo "else _this.val(0);";
-		   echo "return false;";
-	   echo "});";
        echo "});</script>";
        
        wp_enqueue_media();

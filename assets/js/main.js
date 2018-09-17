@@ -1,4 +1,8 @@
 jQuery(document).ready(function($) {
+  $('.navbar-toggler').on('click',function(e){
+    e.preventDefault();
+    $('#top-menu').stop().slideToggle(600);
+  });
   $('li.fullscreen-toggler a').click(function(e) {
     e.preventDefault();
     //$('header .navbar-brand, .fullscreen-toggler').animate({'opacity':0},100);
@@ -25,6 +29,26 @@ jQuery(document).ready(function($) {
     $('html,body').stop().animate({scrollTop:$($href).offset().top}, 500);
     return false;
   });
+
+  $('.accordion-item .accordion-item-title').click(function(e) {
+    e.preventDefault();
+    var $this=$(this);
+    var $parent=$this.parent();
+
+    if( !$parent.hasClass('accordion-active') ){
+      $('.accordion-item').removeClass('accordion-active');
+      $('.accordion-item .accordion-item-content').stop().slideUp(200);
+
+      $parent.addClass('accordion-active');
+      $this.next('.accordion-item-content').stop().slideDown(200);
+    }
+    else{
+      $parent.removeClass('accordion-active');
+      $this.next('.accordion-item-content').stop().slideUp(200);
+    }
+  });
+  if($('.accordion-item').length!==0)$('.accordion-item').eq(0).find('.accordion-item-title').trigger('click');
+
   $('.masonry').masonry({
       itemSelector: '.vc-eletrico_mosaic-item',
       columnWidth: '.vc-eletrico_mosaic-item--2',

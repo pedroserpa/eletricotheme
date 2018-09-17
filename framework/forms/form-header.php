@@ -5,7 +5,8 @@
         <label for="header_style">Header Style</label>
           <div class="input-group" id="header_style">
             <select name="electrico_theme_options_header_styles[header_style]" class="form-control select2">
-              <option value="logo_on_left" <?php echo ($header_style=='logo_on_left')?'selected':'';?>><?php echo __('Logo on left / Menu on the right','electrico');?></option>  
+              <option value="logo_on_left_menu_right" <?php echo ($header_style=='logo_on_left_menu_right')?'selected':'';?>><?php echo __('Logo on left / Menu on the right','eletrico');?></option> 
+              <option value="logo_on_left_menu_center" <?php echo ($header_style=='logo_on_left_menu_center')?'selected':'';?>><?php echo __('Logo on left / Centered Menu','eletrico');?></option>  
               <option value="logo_on_top" <?php echo ($header_style=='logo_on_top')?'selected':'';?>><?php echo __('Logo on top / Menu on bottom','electrico');?></option>  
             </select>
           </div>

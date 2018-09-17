@@ -43,10 +43,17 @@ $css_class = preg_replace( '/\s+/', ' ', apply_filters( VC_SHORTCODE_CUSTOM_CSS_
 $wrapper_attributes[] = 'class="' . esc_attr( trim( $css_class ) ) . '"';
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
+} else {
+	$el_id='vc_column-inner-'.uniqid();
+	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
 
 $output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
 $output .= '<div class="vc_column-inner ' . esc_attr( trim( vc_shortcode_custom_css_class( $css ) ) ) . '">';
+if($background_mask_add=='true'&&!empty($background_mask)):
+	$css.='#'.esc_attr( $el_id ).' .vc_column-inner > .mask {background:'.$background_mask.'}';
+	$output .= '<div class="mask"></div>';
+endif;
 $output .= '<div class="wpb_wrapper">';
 $output .= wpb_js_remove_wpautop( $content );
 if ( vc_shortcode_custom_css_has_property( $css, array(
@@ -59,11 +66,16 @@ if ( vc_shortcode_custom_css_has_property( $css, array(
     /*wp_register_style( $col_id.'-css', false );
     wp_enqueue_style( $col_id.'-css' );
     wp_add_inline_style( $col_id.'-css', $custom_css );*/
-    $css = preg_replace('\'padding-right: (\\d+)px !important;\'','',$css);
-    $css = preg_replace('\'padding-left: (\\d+)px !important;\'','',$css);
+    $css=preg_replace('\'padding-right: (\\d+)px !important;\'','',$css);
+    $css=preg_replace('\'padding-left: (\\d+)px !important;\'','',$css);
     
     $css=$css.$custom_css;
 }
+if(!empty($css)):
+	wp_register_style( 'electrico-style-css', false );
+	wp_enqueue_style( 'electrico-style-css' );
+	wp_add_inline_style( 'electrico-style-css', $css );
+endif;
 $output .= '</div>';
 $output .= '</div>';
 $output .= '</div>';
