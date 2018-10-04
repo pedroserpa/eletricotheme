@@ -247,13 +247,10 @@ class bigSlick extends WPBakeryShortCode {
             
             if($img)
             {
-                $imgs.='
-                <div class="item" id="slick-item-'.$i.'">
-                    <div class="imageContainer">
-                      <img src="'.urldecode($img).'" />
-                      <div class="copy-container">
-            
-                        <div class="container-fluid">
+                $copy='';
+                if(!empty($slide['title']))
+                {
+                    $copy='<div class="container-fluid">
                           <div class="row">
                             <div class="col col-xs-12 text-center btn-wrapper">
                               <h1>'.(($slide['title'])?$slide['title']:'').'</h1>
@@ -263,10 +260,15 @@ class bigSlick extends WPBakeryShortCode {
                                 '.(($slide['btn_text'])?$slide['btn_text']:__('Read more','hipercriativo')).'
                               </a>';
                               endif;
-                            $imgs.='</div>
-            
-                          </div>
-                        </div>
+                    $copy.='</div></div></div>';
+                }
+
+                $imgs.='
+                <div class="item" id="slick-item-'.$i.'">
+                    <div class="imageContainer">
+                      <img src="'.urldecode($img).'" />
+                      <div class="copy-container">'.$copy.'
+                          
             
                       </div>
                     </div>
