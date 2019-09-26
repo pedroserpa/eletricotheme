@@ -28,7 +28,7 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 		add_filter( 'wp_resource_hints', array($this,'electrico_resource_hints'), 10, 2 );
 		add_filter( 'wp_calculate_image_sizes', array($this,'electrico_content_image_sizes_attr'), 10, 2 );
 		add_filter( 'wp_get_attachment_image_attributes', array($this,'electrico_post_thumbnail_sizes_attr'), 10, 3 );
-		add_filter( 'excerpt_more', array($this,'electrico_excerpt_more') );
+			//add_filter( 'excerpt_more', array($this,'electrico_excerpt_more') );
 		
 		add_action( 'show_user_profile', array($this,'extra_user_profile_fields') );
 		add_action( 'edit_user_profile', array($this,'extra_user_profile_fields') );
@@ -39,7 +39,7 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 		
 		add_action( 'login_enqueue_scripts', array($this,'electrico_login_logo') );
 		add_filter( 'login_headerurl', array($this,'electrico_login_logo_url') );
-		add_filter( 'login_headertitle', array($this,'electrico_login_logo_url_title') );
+		add_filter( 'login_headertext', array($this,'electrico_login_logo_url_title') );
 
 		add_action( 'after_setup_theme', array($this,'after_electrico_install') );
 
@@ -493,6 +493,7 @@ if( ! class_exists( 'Hipercriativo_Electrico' ) ) {
 		if(is_page()):
 			return array_merge( $classes, array( 'page-'.$post->post_name ) );
 		endif;
+		return ;
 	}
 	/**
 	VC INTEGRATION

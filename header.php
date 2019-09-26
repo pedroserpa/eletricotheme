@@ -41,7 +41,7 @@ endif;
 $header_styles=get_option('electrico_theme_options_header_styles',true);
 ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php echo body_class(); ?>>
    <header class="page-header" id="masthead" role="banner">
    <?php if ($header_styles['show_toolbar']&&$header_styles['show_toolbar']=='1'):?>
    <div class="toolbar container-fluid">
